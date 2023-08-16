@@ -1,18 +1,26 @@
-import { View, useColorScheme } from 'react-native';
-import { DARKTHEME, LIGHTTHEME } from '../constants/theme'
+import React, { createContext, useContext, useState } from 'react';
 
+export const ThemeContext = createContext(null);
 
-export function ThemeProvider({ children, theme }) {
-    const colorScheme = theme === 'dark' ? 'dark' : 'light'; // Use the provided theme prop
+export const useTheme = () => {
+    return useContext(ThemeContext);
+};
 
-    const themeTextStyle = colorScheme === 'light' ? LIGHTTHEME.colors.text : DARKTHEME.colors.text;
-    const themeContainerStyle =
-        colorScheme === 'light' ? LIGHTTHEME.colors.primary : DARKTHEME.colors.primary;
+export const ThemeProvider = ({ children }) => {
+    const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+    const toggleTheme = () => {
+        setIsDarkTheme(prevTheme => !prevTheme);
+    };
+
+    const theme = {
+        isDarkTheme,
+        toggleTheme,
+    };
 
     return (
-        <View style={{ flex: 1, backgroundColor: themeContainerStyle }}>
+        <ThemeContext.Provider value={theme}>
             {children}
-        </View>
-
+        </ThemeContext.Provider>
     );
-}
+};

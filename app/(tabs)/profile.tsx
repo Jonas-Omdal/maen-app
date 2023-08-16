@@ -1,10 +1,11 @@
 import { View, Text } from 'react-native'
 import React from 'react'
+import style from '../../styles/common'
 
 const Profile = () => {
     return (
-        <View>
-            <Text>Profile</Text>
+        <View style={style.common.container}>
+            <Text style={style.common.text}>Profile</Text>
         </View>
     )
 }

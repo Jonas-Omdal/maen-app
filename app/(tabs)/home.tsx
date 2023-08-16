@@ -1,14 +1,13 @@
-import React, { useState } from 'react'
-import { Text, View } from 'react-native'
-import { ThemeProvider } from '../../context/themeContext'
-import ThemeToggle from '../../components/atoms/ThemeToggle';
+import React from 'react';
+import { View } from 'react-native';
+import WeatherCard from '../../components/organisms/WeatherCard';
+import style from '../../styles/common';
 
 const Home = () => {
-
     return (
-        <ThemeProvider theme=''>
-            <ThemeToggle />
-        </ThemeProvider>
+        <View style={style.common.container}>
+            <WeatherCard />
+        </View>
     )
 }
 

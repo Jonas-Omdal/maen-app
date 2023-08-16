@@ -1,10 +1,10 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
-import { DARKTHEME } from "../../constants/theme";
+import { THEME } from "../../constants/theme";
 
 const CustomTabBarIcon = ({ name, size, focused }) => {
-    const activeColor = DARKTHEME.colors.primary;
-    const inactiveColor = `${DARKTHEME.colors.primary}99`;
+    const activeColor = THEME.colors.primary;
+    const inactiveColor = `${THEME.colors.primary}80`;
 
     const iconColor = focused ? activeColor : inactiveColor;
 
@@ -14,14 +14,23 @@ const CustomTabBarIcon = ({ name, size, focused }) => {
 
 export default () => {
     return (
-        <Tabs screenOptions={{ tabBarShowLabel: false, tabBarStyle: { backgroundColor: DARKTHEME.colors.secondary } }}>
+        <Tabs screenOptions={{
+            tabBarShowLabel: false,
+            tabBarStyle: { backgroundColor: THEME.background.card, borderTopColor: 'none' },
+            headerStyle: { backgroundColor: THEME.background.card, elevation: 0, shadowOpacity: 0 },
+            headerTitleStyle: {
+                color: THEME.text.regular,
+            },
+        }}>
             <Tabs.Screen name="home" options={{
+                headerTitle: "Home",
                 tabBarIcon: ({ size, focused }) => (
                     <CustomTabBarIcon name="ios-home" size={size} focused={focused} />
                 ),
             }} />
 
             <Tabs.Screen name="profile" options={{
+                headerTitle: "Profile",
                 tabBarIcon: ({ size, focused }) => (
                     <CustomTabBarIcon name="ios-person" size={size} focused={focused} />
                 ),

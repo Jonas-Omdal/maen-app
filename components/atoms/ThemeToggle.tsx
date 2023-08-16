@@ -1,19 +1,11 @@
-import React, { useState } from 'react';
-import { View, Switch } from 'react-native';
-import { ThemeProvider } from '../../context/themeContext';
+import React from 'react';
+import { Switch } from 'react-native';
 
 const ThemeToggle = () => {
-    const [isDarkTheme, setIsDarkTheme] = useState(false);
-
-    const toggleTheme = () => {
-        setIsDarkTheme((prevIsDarkTheme) => !prevIsDarkTheme);
-    };
 
     return (
-        <ThemeProvider theme={isDarkTheme ? 'dark' : 'light'}>
-            <Switch value={isDarkTheme} onValueChange={toggleTheme} />
-        </ThemeProvider>
+        <Switch />
     );
 };
 
-export default ThemeToggle
+export default ThemeToggle;
