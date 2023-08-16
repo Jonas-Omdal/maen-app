@@ -5,7 +5,7 @@ import style from '../../styles/common';
 
 const Home = () => {
     return (
-        <View style={style.common.container}>
+        <View style={style.content.container}>
             <WeatherCard />
         </View>
     )

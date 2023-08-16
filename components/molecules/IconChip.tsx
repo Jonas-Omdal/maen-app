@@ -14,12 +14,12 @@ interface IconChipProps {
 }
 
 const DEFAULT_ICON_SIZE = 18;
-const DEFAULT_ICON_COLOR = style.common.text.color;
+const DEFAULT_ICON_COLOR = style.text.regular.color;
 
 const IconChip = ({ title, icon, iconSize = DEFAULT_ICON_SIZE, iconColor = DEFAULT_ICON_COLOR, chipColor }: IconChipProps) => {
     return (
         <View style={[styles.container, chipColor && { backgroundColor: chipColor }]}>
-            <Text style={style.common.text}>{title}</Text>
+            <Text style={style.text.regular}>{title}</Text>
             {icon && <MaterialCommunityIcons name={icon} size={iconSize} color={iconColor} />}
         </View>
     )
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         gap: 12,
         paddingHorizontal: 8,
         paddingVertical: 4,
-        backgroundColor: style.common.card.backgroundColor,
+        backgroundColor: style.content.card.backgroundColor,
         borderRadius: 20,
     }
 })

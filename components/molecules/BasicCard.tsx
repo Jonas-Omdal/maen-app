@@ -11,8 +11,8 @@ interface BasicCardProps {
 
 const BasicCard = ({ title, children }: BasicCardProps) => {
     return (
-        <View style={style.common.card}>
-            {title && <Text style={style.common.title}>{title}</Text>}
+        <View style={style.content.card}>
+            {title && <Text style={style.text.title}>{title}</Text>}
             {children}
         </View>
     )

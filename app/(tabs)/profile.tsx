@@ -4,8 +4,8 @@ import style from '../../styles/common'
 
 const Profile = () => {
     return (
-        <View style={style.common.container}>
-            <Text style={style.common.text}>Profile</Text>
+        <View style={style.content.container}>
+            <Text style={style.text.regular}>Profile</Text>
         </View>
     )
 }
