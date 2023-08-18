@@ -1,12 +1,13 @@
 import {
-    lightningImage,
-    mistImage,
-    rainImage,
-    snowImage,
-    sunImage,
-    cloudyImage,
-    nightImage,
+    lightning,
+    mist,
+    rain,
+    snow,
+    sun,
+    cloudy,
+    night,
 } from "../assets/images";
+
 
 const weatherIcons = {
     Thunderstorm: "⛈️",
@@ -28,22 +29,22 @@ const weatherIcons = {
 };
 
 const weatherImages = {
-    Thunderstorm: lightningImage,
-    Drizzle: rainImage,
-    Rain: rainImage,
-    Snow: snowImage,
-    Atmosphere: mistImage,
-    Clear: sunImage,
-    Clouds: cloudyImage,
-    Mist: mistImage,
-    Smoke: mistImage,
-    Haze: mistImage,
-    Dust: sunImage,
-    Fog: mistImage,
-    Sand: sunImage,
-    Ash: sunImage,
-    Squall: rainImage,
-    Tornado: lightningImage,
+    Thunderstorm: lightning,
+    Drizzle: rain,
+    Rain: rain,
+    Snow: snow,
+    Atmosphere: mist,
+    Clear: sun,
+    Clouds: cloudy,
+    Mist: mist,
+    Smoke: mist,
+    Haze: mist,
+    Dust: sun,
+    Fog: mist,
+    Sand: sun,
+    Ash: sun,
+    Squall: rain,
+    Tornado: lightning
 };
 
 export { weatherIcons, weatherImages };
