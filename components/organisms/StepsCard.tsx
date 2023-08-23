@@ -9,11 +9,11 @@ import style from '../../styles/common'
 import useHealthData from '../../hooks/useHealthData'
 
 const StepsCard = () => {
-    const { steps, distance, flights } = { steps: 10000, distance: 1000, flights: 1000 };
-    // const { steps, distance, flights } = useHealthData(date)
     const [date, setDate] = useState(new Date());
 
-    const changeDate = (numDays) => {
+    const { steps, distance, flights } = useHealthData(date)
+
+    const changeDate = (numDays: number) => {
         const currentDate = new Date(date); // Create a copy of the current date
         // Update the date by adding/subtracting the number of days
         currentDate.setDate(currentDate.getDate() + numDays);

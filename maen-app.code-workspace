@@ -2,6 +2,12 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "../../../Library/CloudStorage/OneDrive-BouvetNorgeAS/Documents/Development/travlr"
+		},
+		{
+			"path": "../../../Library/CloudStorage/OneDrive-BouvetNorgeAS/Documents/Development/equinor/mad"
 		}
 	]
 }

@@ -35,6 +35,6 @@ export default () => {
                     <CustomTabBarIcon name="ios-person" size={size} focused={focused} />
                 ),
             }} />
-        </Tabs >
+        </Tabs>
     )
 }

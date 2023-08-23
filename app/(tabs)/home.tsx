@@ -4,11 +4,7 @@ import StepsCard from '../../components/organisms/StepsCard';
 import WeatherCard from '../../components/organisms/WeatherCard';
 import SpotifyCard from '../../components/organisms/SpotifyCard';
 
-
-
 const Home = () => {
-
-
     return (
         <View style={styles.container}>
             <SpotifyCard />

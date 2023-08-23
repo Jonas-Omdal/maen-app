@@ -21,8 +21,9 @@ const useHealthData = (date: Date) => {
     const [steps, setSteps] = useState(0);
     const [flights, setFlights] = useState(0);
     const [distance, setDistance] = useState(0);
+    const [longestStreak, setLongestStreak] = useState(0);
+    const [mostStepsOfAllTime, setMostStepsOfAllTime] = useState(0);
 
-    // iOS - HealthKit
     useEffect(() => {
         if (Platform.OS !== 'ios') {
             return;
@@ -53,7 +54,7 @@ const useHealthData = (date: Date) => {
         }
 
         const options: HealthInputOptions = {
-            date: date.toISOString(),
+            date: date?.toISOString(),
             includeManuallyAdded: false,
         };
 
@@ -67,7 +68,7 @@ const useHealthData = (date: Date) => {
 
         AppleHealthKit.getFlightsClimbed(options, (err, results) => {
             if (err) {
-                console.log('Error getting the steps:', err);
+                console.log('Error getting the flights:', err);
                 return;
             }
             setFlights(results.value);
@@ -75,14 +76,38 @@ const useHealthData = (date: Date) => {
 
         AppleHealthKit.getDistanceWalkingRunning(options, (err, results) => {
             if (err) {
-                console.log('Error getting the steps:', err);
+                console.log('Error getting the distance:', err);
                 return;
             }
             setDistance(results.value);
         });
+
+        // Calculate longest streak and most steps done of all time
+        AppleHealthKit.getDailyStepCountSamples(options, (err, results) => {
+            if (err) {
+                console.log('Error getting the step samples:', err);
+                return;
+            }
+            let currentStreak = 0;
+            let longestStreakSoFar = 0;
+            let maxSteps = 0;
+
+            for (const sample of results) {
+                if (sample.value >= 10000) {
+                    currentStreak++;
+                    longestStreakSoFar = Math.max(longestStreakSoFar, currentStreak);
+                } else {
+                    currentStreak = 0;
+                }
+                maxSteps = Math.max(maxSteps, sample.value);
+            }
+
+            setLongestStreak(longestStreakSoFar);
+            setMostStepsOfAllTime(maxSteps);
+        });
     }, [hasPermissions, date]);
 
-    return { steps, flights, distance };
+    return { steps, flights, distance, longestStreak, mostStepsOfAllTime };
 };
 
 export default useHealthData;

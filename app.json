@@ -10,6 +10,9 @@
     "plugins": [
       "expo-router",
       "react-native-health"
-    ]
+    ],
+    "ios": {
+      "bundleIdentifier": "com.anonymous.maen-app"
+    }
   }
 }

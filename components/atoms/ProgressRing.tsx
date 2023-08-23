@@ -1,8 +1,10 @@
+import React, { useEffect, useState } from 'react';
 import { View, Text } from 'react-native';
-import SVG, { Circle } from 'react-native-svg';
-import Animated, { useSharedValue, useAnimatedProps, withTiming } from 'react-native-reanimated'
-import { useEffect } from 'react';
+import Animated, { useSharedValue, useAnimatedProps, withTiming } from 'react-native-reanimated';
 import { AntDesign } from '@expo/vector-icons';
+import SVG, { Circle } from 'react-native-svg';
+import ConfettiCannon from 'react-native-confetti-cannon';
+
 import style from '../../styles/common';
 
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
@@ -11,7 +13,7 @@ type ProgressRingProps = {
     radius?: number;
     strokeWidth?: number;
     progress?: number;
-}
+};
 
 const ProgressRing = ({ radius = 80, strokeWidth = 30, progress = 0.5 }: ProgressRingProps) => {
     const innerRadius = radius - strokeWidth / 2;
@@ -27,7 +29,7 @@ const ProgressRing = ({ radius = 80, strokeWidth = 30, progress = 0.5 }: Progres
         strokeDasharray: [circumference * fill.value, circumference]
     }));
 
-    const isCompleted = progress === 1; // Check if progress is completed
+    const isCompleted = progress >= 1; // Check if progress is completed
 
     return (
         <View style={{ width: radius * 2, height: radius * 2 }}>
@@ -59,27 +61,20 @@ const ProgressRing = ({ radius = 80, strokeWidth = 30, progress = 0.5 }: Progres
                 />
             </SVG>
             {isCompleted && (
-                <Text
-                    style={{
-                        position: 'absolute',
-                        alignSelf: 'center',
-                        top: radius - strokeWidth * 0.8, // Adjust position for centering
-                        fontSize: strokeWidth * 1.3,
-                    }}
-                >
-                    😎
-                </Text>
+                <>
+                    <Text
+                        style={{
+                            position: 'absolute',
+                            alignSelf: 'center',
+                            top: radius - strokeWidth * 0.8, // Adjust position for centering
+                            fontSize: strokeWidth * 1.3,
+                        }}
+                    >
+                        😎
+                    </Text>
+                    <ConfettiCannon count={50} origin={{ x: radius, y: radius - strokeWidth * 0.8 }} fadeOut={true} fallSpeed={3000} />
+                </>
             )}
-            <AntDesign
-                name="arrowright"
-                size={strokeWidth * 0.8}
-                color={style.content.card.backgroundColor}
-                style={{
-                    position: 'absolute',
-                    alignSelf: 'center',
-                    top: strokeWidth * 0.1,
-                }}
-            />
         </View>
     );
 };
